@@ -1,0 +1,32 @@
+name: Composer Package Analysis
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'  # or your desired PHP version
+
+      - name: Install Composer dependencies
+        run: composer install
+
+      - name: Run Composer Analyzer
+        run: php composer-analyzer.php > composer-report.md
+
+      - name: Upload Report Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: composer-report
+          path: composer-report.md
+
