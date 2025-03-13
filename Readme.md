@@ -18,10 +18,10 @@ cd composer-analyser
 
 ## Usage
 
-Run the script using PHP:
+Run the script inside a PHP project:
 
 ```sh
-php composer-analyser.php > composer-report.md
+php /path/to/composer-analyser.php > composer-report.md
 ```
 
 This will generate a `composer-report.md` file containing a structured analysis of the project's dependencies.
